@@ -1,4 +1,5 @@
 # osga-shield
+![Uploading mock.png…]()
 
 An open hardware platform for creative coding and generative art, designed to work with the [OSGA software platform](https://github.com/kurogedelic/osga).
 
