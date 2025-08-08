@@ -4,6 +4,24 @@
 
 An open hardware platform for creative coding and generative art, designed to work with the [OSGA software platform](https://github.com/kurogedelic/osga).
 
+## Project Structure
+
+```
+osga-shield/
+├── firmware/          # Raspberry Pi OS configuration and boot scripts
+│   ├── boot/         # Boot configuration (config.txt, cmdline.txt)
+│   ├── config/       # System configurations (ALSA, etc.)
+│   ├── scripts/      # Initialization scripts
+│   ├── systemd/      # SystemD services
+│   └── install.sh    # Installation script
+├── hardware/          # Hardware design files
+│   ├── kicad/        # KiCad schematic and PCB layout
+│   ├── bom/          # Bill of Materials
+│   ├── fabrication/  # Gerber files for PCB manufacturing
+│   └── 3d-models/    # 3D models for enclosure
+└── README.md
+```
+
 ## Overview
 
 osga-shield is a Raspberry Pi shield that provides a complete hardware interface for audio-visual creative applications. It features physical controls, motion sensing, environmental monitoring, and high-quality audio output.
@@ -113,18 +131,17 @@ The osga-shield is designed to work seamlessly with:
    - Connect speaker or headphones to audio output
    - Power via micro USB
 
-2. **Software Setup**
+2. **Software Installation**
    ```bash
-   # Clone OSGA platform
-   git clone https://github.com/kurogedelic/osga.git
-   cd osga
+   # Flash Raspberry Pi OS Lite to SD card
+   # Boot the Pi and clone this repository
+   git clone https://github.com/kurogedelic/osga-shield.git
+   cd osga-shield/firmware
    
-   # Install Love2D
-   sudo apt-get update
-   sudo apt-get install love2d
+   # Run installation script
+   sudo ./install.sh
    
-   # Run OSGA
-   love osga-run
+   # System will reboot and start OSGA automatically
    ```
 
 3. **Test Hardware**

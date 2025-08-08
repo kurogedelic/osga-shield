@@ -1,0 +1,1 @@
+console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes rootwait quiet loglevel=1 systemd.show_status=0 plymouth.enable=0 fbcon=map:10 fbcon=font:ProFont6x11

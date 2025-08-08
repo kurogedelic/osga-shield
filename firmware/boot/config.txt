@@ -1,0 +1,35 @@
+# OSGA Shield Boot Configuration
+# Raspberry Pi Zero 2 W - Minimal Boot Setup
+
+# GPU Memory (minimum needed for framebuffer)
+gpu_mem=16
+
+# Disable unnecessary interfaces
+dtparam=audio=off
+enable_uart=0
+
+# Enable I2C for sensors
+dtparam=i2c_arm=on
+dtparam=i2c_baudrate=400000
+
+# Enable SPI for display
+dtparam=spi=on
+
+# ILI9341 Display via DRM driver (native kernel support)
+dtoverlay=fbtft,ili9341,rotate=90,speed=48000000,fps=60,gpios=reset:24,dc:25,cs:8
+
+# I2S Audio for PCM5102
+dtoverlay=hifiberry-dac
+
+# Disable HDMI to save power
+hdmi_blanking=2
+
+# Disable Bluetooth to save power (optional)
+dtoverlay=disable-bt
+
+# Disable WiFi power management
+dtparam=ant2=off
+
+# Boot faster
+boot_delay=0
+disable_splash=1

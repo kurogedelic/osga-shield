@@ -1,0 +1,13 @@
+[Unit]
+Description=OSGA Early Boot Display
+DefaultDependencies=no
+After=sysinit.target
+Before=basic.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/osga-splash
+
+[Install]
+WantedBy=sysinit.target

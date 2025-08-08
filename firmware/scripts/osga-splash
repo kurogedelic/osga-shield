@@ -1,0 +1,14 @@
+#!/bin/bash
+# OSGA Early Boot Splash
+# Shows a simple image on ILI9341 during boot
+
+# Wait for framebuffer device
+while [ ! -e /dev/fb1 ]; do
+    sleep 0.1
+done
+
+# Clear and show splash
+dd if=/dev/zero of=/dev/fb1 bs=153600 count=1 2>/dev/null
+if [ -f /usr/share/osga/splash.raw ]; then
+    dd if=/usr/share/osga/splash.raw of=/dev/fb1 2>/dev/null
+fi
