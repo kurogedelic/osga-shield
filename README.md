@@ -78,15 +78,14 @@ graph TD
 - **Bit Depth**: 32-bit
 
 ### Input Controls
-- **Buttons**: 3x tactile switches (A, B, C)
-- **Rotary Encoder**: With push button function
+- **Buttons**: 2x tactile switches (A, B)
+- **Rotary Encoder**: With push button function (Enter)
 - **Motion**: MPU6050 6-axis IMU (3-axis gyro + 3-axis accelerometer)
 
-### Sensors
-- **Environmental**: BME280
-  - Temperature: -40 to +85°C
-  - Humidity: 0-100% RH
-  - Pressure: 300-1100 hPa
+### Expansion
+- **Grove Connector**: I²C expansion port for additional sensors/modules
+  - Compatible with Seeed Studio Grove ecosystem
+  - 3.3V/5V power selectable
 
 ### Feedback
 - **Haptic**: Piezo element for tactile feedback
@@ -96,25 +95,49 @@ graph TD
 - **Platform**: Raspberry Pi Zero 2 W
 - **Connectivity**: WiFi, Bluetooth
 
-## Pin Mapping
+## Pin Mapping (Raspberry Pi Zero 2 WH)
 
-| Component | GPIO Pin | Function |
-|-----------|----------|----------|
-| Button A | GPIO 5 | Digital Input (Pull-up) |
-| Button B | GPIO 6 | Digital Input (Pull-up) |
-| Button C | GPIO 13 | Digital Input (Pull-up) |
-| Rotary CLK | GPIO 17 | Rotary Encoder Clock |
-| Rotary DT | GPIO 27 | Rotary Encoder Data |
-| Rotary SW | GPIO 22 | Rotary Encoder Switch |
-| LCD CS | GPIO 8 | SPI Chip Select |
-| LCD DC | GPIO 25 | Data/Command |
-| LCD RST | GPIO 24 | Reset |
-| I2S BCK | GPIO 18 | Bit Clock |
-| I2S LRCK | GPIO 19 | Left/Right Clock |
-| I2S DATA | GPIO 21 | Audio Data |
-| I2C SDA | GPIO 2 | I2C Data (MPU6050, BME280) |
-| I2C SCL | GPIO 3 | I2C Clock |
-| Haptic | GPIO 12 | PWM Output |
+### I²C Buses
+| Bus | Component | GPIO Pin | Physical Pin | Function |
+|-----|-----------|----------|--------------|----------|
+| I²C1 | MPU_SDA | GPIO 2 | Pin 3 | MPU6050 Data |
+| I²C1 | MPU_SCL | GPIO 3 | Pin 5 | MPU6050 Clock |
+| I²C (SW) | Grove_SDA | GPIO 22 | Pin 15 | Grove Connector Data |
+| I²C (SW) | Grove_SCL | GPIO 23 | Pin 16 | Grove Connector Clock |
+
+### Audio (I²S)
+| Component | GPIO Pin | Physical Pin | Function |
+|-----------|----------|--------------|----------|
+| I2S_BCK | GPIO 18 | Pin 12 | Bit Clock |
+| I2S_LRCK | GPIO 19 | Pin 35 | Left/Right Clock |
+| I2S_IN | GPIO 20 | Pin 38 | Audio Input |
+| I2S_OUT | GPIO 21 | Pin 40 | Audio Output (to PCM5102) |
+
+### Display (SPI)
+| Component | GPIO Pin | Physical Pin | Function |
+|-----------|----------|--------------|----------|
+| LCD_CS | GPIO 8 (CE0) | Pin 24 | Chip Select |
+| LCD_MISO | GPIO 9 | Pin 21 | Master In Slave Out |
+| LCD_MOSI | GPIO 10 | Pin 19 | Master Out Slave In |
+| LCD_SCLK | GPIO 11 | Pin 23 | Serial Clock |
+| LCD_DC | GPIO 24 | Pin 18 | Data/Command |
+| LCD_RESET | GPIO 25 | Pin 22 | Reset |
+| LCD_LED | GPIO 12 | Pin 32 | Backlight PWM |
+
+### Input Controls
+| Component | GPIO Pin | Physical Pin | Function |
+|-----------|----------|--------------|----------|
+| Button_A | GPIO 6 | Pin 31 | Button A |
+| Button_B | GPIO 5 | Pin 29 | Button B |
+| Rotary_CLK | GPIO 16 | Pin 36 | Encoder Clock |
+| Rotary_DT | GPIO 13 | Pin 33 | Encoder Data |
+| Rotary_Enter | GPIO 26 | Pin 37 | Encoder Button |
+
+### UART (Debug)
+| Component | GPIO Pin | Physical Pin | Function |
+|-----------|----------|--------------|----------|
+| UART_TX | GPIO 14 | Pin 8 | Transmit |
+| UART_RX | GPIO 15 | Pin 10 | Receive |
 
 ## Software Support
 

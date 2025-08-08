@@ -8,15 +8,22 @@ gpu_mem=16
 dtparam=audio=off
 enable_uart=0
 
-# Enable I2C for sensors
+# Enable I2C1 for MPU6050
 dtparam=i2c_arm=on
 dtparam=i2c_baudrate=400000
+
+# Software I2C for Grove connector (GPIO22/23)
+# Will be configured via device tree overlay or bit-banging driver
 
 # Enable SPI for display
 dtparam=spi=on
 
 # ILI9341 Display via DRM driver (native kernel support)
-dtoverlay=fbtft,ili9341,rotate=90,speed=48000000,fps=60,gpios=reset:24,dc:25,cs:8
+# Updated GPIO pins: reset:25, dc:24, cs:8, led:12
+dtoverlay=fbtft,ili9341,rotate=90,speed=48000000,fps=60,gpios=reset:25,dc:24,cs:8,led:12
+
+# Enable PWM for LCD backlight control
+dtoverlay=pwm,pin=12,func=4
 
 # I2S Audio for PCM5102
 dtoverlay=hifiberry-dac
