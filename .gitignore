@@ -1,1 +1,24 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# KiCad backup files
+*.bak
+*-backup
+*-cache.lib
+*.tmp
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.log
+*.tmp
+tmp/
+temp/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*

@@ -8,19 +8,24 @@ An open hardware platform for creative coding and generative art, designed to wo
 
 ```
 osga-shield/
-├── firmware/          # Raspberry Pi OS configuration and boot scripts
-│   ├── boot/         # Boot configuration (config.txt, cmdline.txt)
-│   ├── config/       # System configurations (ALSA, etc.)
-│   ├── scripts/      # Initialization scripts
-│   ├── systemd/      # SystemD services
-│   └── install.sh    # Installation script
-├── hardware/          # Hardware design files
-│   ├── kicad/        # KiCad schematic and PCB layout
-│   ├── bom/          # Bill of Materials
-│   ├── fabrication/  # Gerber files for PCB manufacturing
-│   └── 3d-models/    # 3D models for enclosure
-└── README.md
+├── CLAUDE.md              # Complete setup guide and troubleshooting
+├── PROJECT_STRUCTURE.md   # Detailed project organization
+├── firmware/              # Raspberry Pi OS configuration and software
+│   ├── install.sh        # Complete installation script
+│   ├── boot/             # Boot configuration files
+│   ├── config/           # System configurations (ALSA, Grove I2C)
+│   ├── scripts/          # Hardware initialization scripts
+│   └── systemd/          # Auto-start service definitions
+├── hardware/              # Hardware design files
+│   ├── kicad/            # KiCad schematic and PCB layout
+│   ├── bom/              # Bill of Materials
+│   ├── fabrication/      # Gerber files for PCB manufacturing
+│   └── 3d-models/        # 3D models for enclosure
+└── README.md             # This file - project overview
 ```
+
+📋 See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for detailed organization guide.  
+🔧 See [CLAUDE.md](CLAUDE.md) for complete setup instructions and troubleshooting.
 
 ## Overview
 
