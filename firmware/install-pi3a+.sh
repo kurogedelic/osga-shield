@@ -4,13 +4,25 @@
 
 set -e
 
+# Setup logging
+LOGFILE="/home/pi/osga_install_log.txt"
+exec > >(tee -a "$LOGFILE") 2>&1
+
 echo "=================================================="
 echo "OSGA Shield Setup for Raspberry Pi 3A+"
+echo "Started: $(date)"
+echo "Log file: $LOGFILE"
 echo "=================================================="
 
 # Detect Pi model
 PI_MODEL=$(cat /proc/cpuinfo | grep "Model" | head -1)
 echo "Detected Pi Model: $PI_MODEL"
+
+# Fix dpkg issues first
+echo "Checking and fixing dpkg database..."
+dpkg --configure -a || true
+apt-get clean
+apt-get autoclean
 
 # Update system
 echo "Updating system packages..."
@@ -111,7 +123,14 @@ chown -R pi:pi /home/pi/osga*
 echo "=================================================="
 echo "Setup complete! The Pi will reboot now."
 echo "OSGA will start automatically after boot."
+echo "Completed: $(date)"
 echo "=================================================="
+echo ""
+echo "Installation log saved to: $LOGFILE"
+echo "You can review it later with: cat $LOGFILE"
+
+# Set proper ownership of log file
+chown pi:pi "$LOGFILE"
 
 # Reboot
 echo "Rebooting in 5 seconds..."
